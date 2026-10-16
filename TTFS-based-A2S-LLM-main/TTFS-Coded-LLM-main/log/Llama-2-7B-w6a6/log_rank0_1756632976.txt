@@ -1,0 +1,701 @@
+[2025-08-31 09:36:16 root] (main.py 222): INFO Namespace(model_path='/ephemeral/Models/Llama-2-7b-hf', model_name='Llama-2-7B', cache_dir='./cache', output_dir='./log/Llama-2-7B-w6a6', save_quant_dir='./asym_pre_quantized_models/Llama-2-7B-w6a6', real_quant=False, resume_quant=None, wbits=6, w_group_size=-1, w_asym=False, input_bits=6, input_group_size=-1, input_mode='static', input_asym=True, k_bits=16, v_bits=16, kv_group_size=32, k_pre_rope=False, kv_mode='static', kv_asym=False, mse_init=True, asym_mse_init=False, skip_qk_weight_init=False, block_qk_weight_init=False, mse_init_size=8, fp_mse_init=False, pre_rotate=True, rotate_mode='hadamard', down_online_had=True, qk_online_had=True, set_prefixed_tokens=True, outlier_threshold=64, activation_clipping=False, quant_lr=5e-05, weight_lr=5e-06, min_lr_factor=10, clip_grad=0.3, wd=0, off_load_to_disk=False, use_fp32=False, debug=False, early_stop=0, constant_wlr=False, train_size=512, val_size=64, training_seqlen=1024, epochs=5, calib_dataset='pile', batch_size=4, loss_type='mse', training_target='fp_input', ppl_seqlen=2048, seed=2, eval_ppl=True, eval_tasks='piqa,arc_easy,arc_challenge,hellaswag,winogrande', eval_batch_size=16, max_memory='70GiB', max_outlier=5, max_item_index=5, set_outlier_zero=False, modified_index=0, ablate_prefix_number=None)
+[2025-08-31 09:36:32 root] (train_utils.py 105): INFO GPU memory (from rotate_model): 2.10 -> 0.15 GB (-1.95 GB)
+[2025-08-31 09:38:31 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since mit-han-lab/pile-val-backup couldn't be found on the Hugging Face Hub
+[2025-08-31 09:38:31 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'default' at /home/ubuntu/.cache/huggingface/datasets/mit-han-lab___pile-val-backup/default/0.0.0/2f5e46ae6a69cf0dce4b12f78241c408936ca0e4 (last modified on Tue Aug 26 09:41:09 2025).
+[2025-08-31 09:38:46 root] (main.py 293): INFO get 3 prefixed tokens; token id:[29889, 13, 1]; text: .
+<s>
+[2025-08-31 09:38:46 root] (main.py 295): INFO time to get prefixed token:1e+01s
+[2025-08-31 09:39:03 root] (main.py 320): INFO init weight quantizer
+[2025-08-31 09:39:08 root] (main.py 325): INFO init input quantizer
+[2025-08-31 09:39:09 root] (train_utils.py 105): INFO GPU memory (from main): 13.85 -> 0.03 GB (-13.82 GB)
+[2025-08-31 09:39:09 root] (main.py 345): INFO === start quantization Training ===
+[2025-08-31 09:39:10 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since mit-han-lab/pile-val-backup couldn't be found on the Hugging Face Hub
+[2025-08-31 09:39:10 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'default' at /home/ubuntu/.cache/huggingface/datasets/mit-han-lab___pile-val-backup/default/0.0.0/2f5e46ae6a69cf0dce4b12f78241c408936ca0e4 (last modified on Tue Aug 26 09:41:09 2025).
+[2025-08-31 09:39:27 root] (block_ap.py 143): INFO Starting ...
+[2025-08-31 09:39:37 root] (block_ap.py 253): INFO === Start quantize blocks 0===
+[2025-08-31 09:39:47 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:39:48 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:2.104043960571289e-05 
+[2025-08-31 09:39:48 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:1.7702579498291016e-05 
+[2025-08-31 09:39:48 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:3.0994415283203125e-06 
+[2025-08-31 09:39:51 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.44999998807907104); best_loss:2.384185791015625e-07 
+[2025-08-31 09:39:51 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:0.0 
+[2025-08-31 09:39:51 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:2.562999725341797e-06 
+[2025-08-31 09:39:52 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:2.562999725341797e-06 
+[2025-08-31 09:39:54 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:5.960464477539063e-08 
+[2025-08-31 09:39:54 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:5.960464477539063e-08 
+[2025-08-31 09:39:55 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.949999988079071); best_loss:0.0 
+[2025-08-31 09:39:55 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.949999988079071); best_loss:5.960464477539063e-08 
+[2025-08-31 09:39:55 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:39:55 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:40:12 root] (block_ap.py 326): INFO blocks 0 epoch 0 train_loss:6.86298199070734e-06 val_loss:3.406755695323227e-06  norm:0.00333135 max memory_allocated 14007.66357421875 time 16.78693652153015 
+[2025-08-31 09:40:27 root] (block_ap.py 326): INFO blocks 0 epoch 1 train_loss:6.463507816079073e-06 val_loss:2.41949487644888e-06  norm:0.00329152 max memory_allocated 14007.66357421875 time 15.237322330474854 
+[2025-08-31 09:40:42 root] (block_ap.py 326): INFO blocks 0 epoch 2 train_loss:4.58885597254266e-06 val_loss:1.4869689266561181e-06  norm:0.00215085 max memory_allocated 14007.66357421875 time 15.146299600601196 
+[2025-08-31 09:40:57 root] (block_ap.py 326): INFO blocks 0 epoch 3 train_loss:2.919865437434055e-06 val_loss:1.1471728385004099e-06  norm:0.00146720 max memory_allocated 14007.66357421875 time 14.442867040634155 
+[2025-08-31 09:41:10 root] (block_ap.py 326): INFO blocks 0 epoch 4 train_loss:2.2021908989700023e-06 val_loss:1.0525664038141258e-06  norm:0.00255632 max memory_allocated 14007.66357421875 time 13.689514875411987 
+[2025-08-31 09:41:21 root] (block_ap.py 253): INFO === Start quantize blocks 1===
+[2025-08-31 09:41:32 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:41:33 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:2.467632293701172e-05 
+[2025-08-31 09:41:33 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:2.7000904083251953e-05 
+[2025-08-31 09:41:33 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:3.2186508178710938e-06 
+[2025-08-31 09:41:36 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:1.3709068298339844e-06 
+[2025-08-31 09:41:36 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.1920928955078125e-07 
+[2025-08-31 09:41:37 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:9.179115295410156e-06 
+[2025-08-31 09:41:37 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:8.106231689453125e-06 
+[2025-08-31 09:41:39 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.8499999642372131); best_loss:4.76837158203125e-07 
+[2025-08-31 09:41:39 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:2.980232238769531e-07 
+[2025-08-31 09:41:40 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.949999988079071); best_loss:1.1920928955078125e-07 
+[2025-08-31 09:41:40 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.980232238769531e-07 
+[2025-08-31 09:41:40 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:41:40 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:41:53 root] (block_ap.py 326): INFO blocks 1 epoch 0 train_loss:4.496983456192538e-05 val_loss:6.489144652732648e-06  norm:0.01073180 max memory_allocated 14007.66357421875 time 12.964163780212402 
+[2025-08-31 09:42:07 root] (block_ap.py 326): INFO blocks 1 epoch 1 train_loss:1.4864570403005928e-05 val_loss:5.2828236221103e-06  norm:0.00305217 max memory_allocated 14007.66357421875 time 13.110512256622314 
+[2025-08-31 09:42:19 root] (block_ap.py 326): INFO blocks 1 epoch 2 train_loss:1.4022853974893223e-05 val_loss:4.890240234090015e-06  norm:0.00228052 max memory_allocated 14007.66357421875 time 12.23334813117981 
+[2025-08-31 09:42:31 root] (block_ap.py 326): INFO blocks 1 epoch 3 train_loss:1.3535435755329672e-05 val_loss:4.67044174001785e-06  norm:0.00207978 max memory_allocated 14007.66357421875 time 12.282984495162964 
+[2025-08-31 09:42:45 root] (block_ap.py 326): INFO blocks 1 epoch 4 train_loss:1.3140373994247057e-05 val_loss:4.542002898233477e-06  norm:0.00144049 max memory_allocated 14007.66357421875 time 13.726035356521606 
+[2025-08-31 09:42:56 root] (block_ap.py 253): INFO === Start quantize blocks 2===
+[2025-08-31 09:43:04 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:43:05 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:6.961822509765625e-05 
+[2025-08-31 09:43:05 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:7.748603820800781e-05 
+[2025-08-31 09:43:05 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:1.9371509552001953e-05 
+[2025-08-31 09:43:08 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:5.543231964111328e-06 
+[2025-08-31 09:43:08 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.7881393432617188e-07 
+[2025-08-31 09:43:09 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:1.9729137420654297e-05 
+[2025-08-31 09:43:09 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:1.728534698486328e-05 
+[2025-08-31 09:43:11 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.8499999642372131); best_loss:1.2516975402832031e-06 
+[2025-08-31 09:43:12 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:5.960464477539062e-07 
+[2025-08-31 09:43:12 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.980232238769531e-07 
+[2025-08-31 09:43:13 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:8.940696716308594e-07 
+[2025-08-31 09:43:13 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:43:13 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:43:27 root] (block_ap.py 326): INFO blocks 2 epoch 0 train_loss:2.8415885026333854e-05 val_loss:1.7438707800465636e-05  norm:0.00239306 max memory_allocated 14007.66357421875 time 14.118809700012207 
+[2025-08-31 09:43:39 root] (block_ap.py 326): INFO blocks 2 epoch 1 train_loss:2.6550951588433236e-05 val_loss:1.6836265785968862e-05  norm:0.00167642 max memory_allocated 14007.66357421875 time 12.303749322891235 
+[2025-08-31 09:43:52 root] (block_ap.py 326): INFO blocks 2 epoch 2 train_loss:2.585934635135345e-05 val_loss:1.6524965758435428e-05  norm:0.00149742 max memory_allocated 14007.66357421875 time 12.887693166732788 
+[2025-08-31 09:44:05 root] (block_ap.py 326): INFO blocks 2 epoch 3 train_loss:2.4898121409933083e-05 val_loss:1.6047410099417903e-05  norm:0.00100945 max memory_allocated 14007.66357421875 time 12.884039402008057 
+[2025-08-31 09:44:20 root] (block_ap.py 326): INFO blocks 2 epoch 4 train_loss:2.4150254830601625e-05 val_loss:1.5835683370823972e-05  norm:0.00071123 max memory_allocated 14007.66357421875 time 15.334137439727783 
+[2025-08-31 09:44:28 root] (block_ap.py 253): INFO === Start quantize blocks 3===
+[2025-08-31 09:44:38 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:44:40 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00017631053924560547 
+[2025-08-31 09:44:40 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00019085407257080078 
+[2025-08-31 09:44:41 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:5.08427619934082e-05 
+[2025-08-31 09:44:43 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:9.179115295410156e-06 
+[2025-08-31 09:44:44 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:3.5762786865234375e-07 
+[2025-08-31 09:44:45 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:3.224611282348633e-05 
+[2025-08-31 09:44:45 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:2.765655517578125e-05 
+[2025-08-31 09:44:46 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:1.9073486328125e-06 
+[2025-08-31 09:44:47 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:1.2516975402832031e-06 
+[2025-08-31 09:44:47 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:4.76837158203125e-07 
+[2025-08-31 09:44:48 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.1457672119140625e-06 
+[2025-08-31 09:44:48 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:44:48 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:45:04 root] (block_ap.py 326): INFO blocks 3 epoch 0 train_loss:5.482784763444215e-05 val_loss:4.453994915820658e-05  norm:0.00227856 max memory_allocated 14007.66357421875 time 16.524483919143677 
+[2025-08-31 09:45:18 root] (block_ap.py 326): INFO blocks 3 epoch 1 train_loss:5.2730807510670274e-05 val_loss:4.454807276488282e-05  norm:0.00198741 max memory_allocated 14007.66357421875 time 13.47291612625122 
+[2025-08-31 09:45:30 root] (block_ap.py 326): INFO blocks 3 epoch 2 train_loss:5.1711271225940436e-05 val_loss:4.369446469354443e-05  norm:0.00197505 max memory_allocated 14007.66357421875 time 11.743916511535645 
+[2025-08-31 09:45:41 root] (block_ap.py 326): INFO blocks 3 epoch 3 train_loss:4.971832822775468e-05 val_loss:4.231741331750527e-05  norm:0.00154963 max memory_allocated 14007.66357421875 time 11.643776178359985 
+[2025-08-31 09:45:55 root] (block_ap.py 326): INFO blocks 3 epoch 4 train_loss:4.8040041292551905e-05 val_loss:4.186575461062603e-05  norm:0.00098586 max memory_allocated 14007.66357421875 time 13.260158061981201 
+[2025-08-31 09:46:06 root] (block_ap.py 253): INFO === Start quantize blocks 4===
+[2025-08-31 09:46:18 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:46:20 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00016391277313232422 
+[2025-08-31 09:46:22 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00017452239990234375 
+[2025-08-31 09:46:24 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:4.839897155761719e-05 
+[2025-08-31 09:46:26 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:1.3828277587890625e-05 
+[2025-08-31 09:46:28 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:7.748603820800781e-07 
+[2025-08-31 09:46:32 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:4.190206527709961e-05 
+[2025-08-31 09:46:36 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:3.415346145629883e-05 
+[2025-08-31 09:46:38 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.8499999642372131); best_loss:3.0994415283203125e-06 
+[2025-08-31 09:46:40 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:2.384185791015625e-06 
+[2025-08-31 09:46:41 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:8.940696716308594e-07 
+[2025-08-31 09:46:42 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:3.635883331298828e-06 
+[2025-08-31 09:46:42 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:46:42 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:47:10 root] (block_ap.py 326): INFO blocks 4 epoch 0 train_loss:9.815896191867068e-05 val_loss:8.819140202831477e-05  norm:0.00397575 max memory_allocated 14007.66357421875 time 28.04377794265747 
+[2025-08-31 09:47:35 root] (block_ap.py 326): INFO blocks 4 epoch 1 train_loss:9.742424299474806e-05 val_loss:8.781423093751073e-05  norm:0.00425849 max memory_allocated 14007.66357421875 time 24.78176236152649 
+[2025-08-31 09:48:00 root] (block_ap.py 326): INFO blocks 4 epoch 2 train_loss:9.584618965163827e-05 val_loss:8.629825606476516e-05  norm:0.00312510 max memory_allocated 14007.66357421875 time 24.744041681289673 
+[2025-08-31 09:48:24 root] (block_ap.py 326): INFO blocks 4 epoch 3 train_loss:8.999829879030585e-05 val_loss:8.449169399682432e-05  norm:0.00156568 max memory_allocated 14007.66357421875 time 24.769501447677612 
+[2025-08-31 09:48:49 root] (block_ap.py 326): INFO blocks 4 epoch 4 train_loss:8.666807116242126e-05 val_loss:8.385478577110916e-05  norm:0.00095984 max memory_allocated 14007.66357421875 time 24.754838228225708 
+[2025-08-31 09:49:00 root] (block_ap.py 253): INFO === Start quantize blocks 5===
+[2025-08-31 09:49:11 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:49:13 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0001819133758544922 
+[2025-08-31 09:49:15 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00019919872283935547 
+[2025-08-31 09:49:17 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:5.543231964111328e-05 
+[2025-08-31 09:49:19 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:1.7344951629638672e-05 
+[2025-08-31 09:49:21 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.6689300537109375e-06 
+[2025-08-31 09:49:25 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:5.173683166503906e-05 
+[2025-08-31 09:49:29 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:4.1425228118896484e-05 
+[2025-08-31 09:49:31 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:4.5299530029296875e-06 
+[2025-08-31 09:49:33 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:3.516674041748047e-06 
+[2025-08-31 09:49:34 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:1.1920928955078125e-06 
+[2025-08-31 09:49:35 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:5.543231964111328e-06 
+[2025-08-31 09:49:35 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:49:35 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:50:03 root] (block_ap.py 326): INFO blocks 5 epoch 0 train_loss:0.00015207634714897722 val_loss:0.00014542348799295723  norm:0.00417610 max memory_allocated 14007.66357421875 time 27.682210683822632 
+[2025-08-31 09:50:28 root] (block_ap.py 326): INFO blocks 5 epoch 1 train_loss:0.0001501160440966487 val_loss:0.00014438539801631123  norm:0.00498157 max memory_allocated 14007.66357421875 time 24.778169870376587 
+[2025-08-31 09:50:52 root] (block_ap.py 326): INFO blocks 5 epoch 2 train_loss:0.00015044710016809404 val_loss:0.00014309084508568048  norm:0.00506843 max memory_allocated 14007.66357421875 time 24.73404312133789 
+[2025-08-31 09:51:17 root] (block_ap.py 326): INFO blocks 5 epoch 3 train_loss:0.00014205129991751164 val_loss:0.0001404741924488917  norm:0.00235035 max memory_allocated 14007.66357421875 time 24.735341548919678 
+[2025-08-31 09:51:42 root] (block_ap.py 326): INFO blocks 5 epoch 4 train_loss:0.00013653415953740478 val_loss:0.00013951875735074282  norm:0.00123190 max memory_allocated 14007.66357421875 time 24.73312520980835 
+[2025-08-31 09:51:53 root] (block_ap.py 253): INFO === Start quantize blocks 6===
+[2025-08-31 09:52:04 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:52:07 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00026035308837890625 
+[2025-08-31 09:52:08 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00026988983154296875 
+[2025-08-31 09:52:10 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:7.617473602294922e-05 
+[2025-08-31 09:52:12 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:2.0682811737060547e-05 
+[2025-08-31 09:52:14 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:2.0265579223632812e-06 
+[2025-08-31 09:52:18 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:6.270408630371094e-05 
+[2025-08-31 09:52:22 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:4.83393669128418e-05 
+[2025-08-31 09:52:25 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:6.67572021484375e-06 
+[2025-08-31 09:52:26 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:5.185604095458984e-06 
+[2025-08-31 09:52:27 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.7285346984863281e-06 
+[2025-08-31 09:52:28 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:7.867813110351562e-06 
+[2025-08-31 09:52:28 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:52:28 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:52:56 root] (block_ap.py 326): INFO blocks 6 epoch 0 train_loss:0.0002165192418033257 val_loss:0.00021960864251013845  norm:0.00389265 max memory_allocated 14007.66357421875 time 27.90528964996338 
+[2025-08-31 09:53:21 root] (block_ap.py 326): INFO blocks 6 epoch 1 train_loss:0.00021879852283746004 val_loss:0.00022203245316632092  norm:0.00582663 max memory_allocated 14007.66357421875 time 24.72693967819214 
+[2025-08-31 09:53:46 root] (block_ap.py 326): INFO blocks 6 epoch 2 train_loss:0.0002149069041479379 val_loss:0.00021682289661839604  norm:0.00465331 max memory_allocated 14007.66357421875 time 24.723076820373535 
+[2025-08-31 09:54:10 root] (block_ap.py 326): INFO blocks 6 epoch 3 train_loss:0.0002023928245762363 val_loss:0.00021273676247801632  norm:0.00246604 max memory_allocated 14007.66357421875 time 24.74393081665039 
+[2025-08-31 09:54:35 root] (block_ap.py 326): INFO blocks 6 epoch 4 train_loss:0.00019566930131986737 val_loss:0.00021128404478076845  norm:0.00144264 max memory_allocated 14007.66357421875 time 24.752565622329712 
+[2025-08-31 09:54:45 root] (block_ap.py 253): INFO === Start quantize blocks 7===
+[2025-08-31 09:54:56 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:54:59 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0002791881561279297 
+[2025-08-31 09:55:01 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00028324127197265625 
+[2025-08-31 09:55:03 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:8.434057235717773e-05 
+[2025-08-31 09:55:05 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:2.682209014892578e-05 
+[2025-08-31 09:55:07 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:3.0994415283203125e-06 
+[2025-08-31 09:55:11 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:7.170438766479492e-05 
+[2025-08-31 09:55:15 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:5.549192428588867e-05 
+[2025-08-31 09:55:17 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:9.5367431640625e-06 
+[2025-08-31 09:55:19 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:7.092952728271484e-06 
+[2025-08-31 09:55:20 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.4437904357910156e-06 
+[2025-08-31 09:55:21 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:1.0669231414794922e-05 
+[2025-08-31 09:55:21 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:55:21 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:55:48 root] (block_ap.py 326): INFO blocks 7 epoch 0 train_loss:0.0002973088703583926 val_loss:0.0003127430973108858  norm:0.00590004 max memory_allocated 14007.66357421875 time 27.186218738555908 
+[2025-08-31 09:56:13 root] (block_ap.py 326): INFO blocks 7 epoch 1 train_loss:0.0002969934430439025 val_loss:0.000312233401928097  norm:0.00697640 max memory_allocated 14007.66357421875 time 24.831889152526855 
+[2025-08-31 09:56:38 root] (block_ap.py 326): INFO blocks 7 epoch 2 train_loss:0.0002880601678043604 val_loss:0.0003071388346143067  norm:0.00488211 max memory_allocated 14007.66357421875 time 24.87468194961548 
+[2025-08-31 09:57:03 root] (block_ap.py 326): INFO blocks 7 epoch 3 train_loss:0.00027246586978435516 val_loss:0.000303634034935385  norm:0.00226299 max memory_allocated 14007.66357421875 time 24.86245083808899 
+[2025-08-31 09:57:28 root] (block_ap.py 326): INFO blocks 7 epoch 4 train_loss:0.0002662408514879644 val_loss:0.00030221635825000703  norm:0.00153477 max memory_allocated 14007.66357421875 time 24.82785177230835 
+[2025-08-31 09:57:38 root] (block_ap.py 253): INFO === Start quantize blocks 8===
+[2025-08-31 09:57:50 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 09:57:52 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0002753734588623047 
+[2025-08-31 09:57:54 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00027942657470703125 
+[2025-08-31 09:57:56 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:8.618831634521484e-05 
+[2025-08-31 09:57:58 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:2.8073787689208984e-05 
+[2025-08-31 09:58:00 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:4.708766937255859e-06 
+[2025-08-31 09:58:04 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:7.277727127075195e-05 
+[2025-08-31 09:58:08 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:6.002187728881836e-05 
+[2025-08-31 09:58:10 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:1.3828277587890625e-05 
+[2025-08-31 09:58:12 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:8.761882781982422e-06 
+[2025-08-31 09:58:13 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:3.039836883544922e-06 
+[2025-08-31 09:58:14 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:1.2993812561035156e-05 
+[2025-08-31 09:58:14 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 09:58:14 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 09:58:42 root] (block_ap.py 326): INFO blocks 8 epoch 0 train_loss:0.00040094947325997055 val_loss:0.0004441752680577338  norm:0.02060691 max memory_allocated 14007.66357421875 time 28.090960025787354 
+[2025-08-31 09:59:07 root] (block_ap.py 326): INFO blocks 8 epoch 1 train_loss:0.0003960431495215744 val_loss:0.00044251594226807356  norm:0.02514284 max memory_allocated 14007.66357421875 time 24.824623107910156 
+[2025-08-31 09:59:32 root] (block_ap.py 326): INFO blocks 8 epoch 2 train_loss:0.0003772129421122372 val_loss:0.000435659836512059  norm:0.01548550 max memory_allocated 14007.66357421875 time 24.793201684951782 
+[2025-08-31 09:59:57 root] (block_ap.py 326): INFO blocks 8 epoch 3 train_loss:0.00036256181192584336 val_loss:0.0004324717738199979  norm:0.01155339 max memory_allocated 14007.66357421875 time 24.817928314208984 
+[2025-08-31 10:00:21 root] (block_ap.py 326): INFO blocks 8 epoch 4 train_loss:0.00035548489540815353 val_loss:0.0004305720212869346  norm:0.01113591 max memory_allocated 14007.66357421875 time 24.79854941368103 
+[2025-08-31 10:00:32 root] (block_ap.py 253): INFO === Start quantize blocks 9===
+[2025-08-31 10:00:43 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:00:46 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0002892017364501953 
+[2025-08-31 10:00:47 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00030684471130371094 
+[2025-08-31 10:00:49 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:9.447336196899414e-05 
+[2025-08-31 10:00:51 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:3.337860107421875e-05 
+[2025-08-31 10:00:53 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:6.616115570068359e-06 
+[2025-08-31 10:00:57 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:7.62939453125e-05 
+[2025-08-31 10:01:01 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:6.479024887084961e-05 
+[2025-08-31 10:01:04 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:1.1622905731201172e-05 
+[2025-08-31 10:01:05 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:1.0192394256591797e-05 
+[2025-08-31 10:01:06 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:3.933906555175781e-06 
+[2025-08-31 10:01:07 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:1.531839370727539e-05 
+[2025-08-31 10:01:07 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:01:07 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:01:34 root] (block_ap.py 326): INFO blocks 9 epoch 0 train_loss:0.0004907904076389968 val_loss:0.0005879055242985487  norm:0.00555819 max memory_allocated 14007.66357421875 time 26.984301328659058 
+[2025-08-31 10:01:59 root] (block_ap.py 326): INFO blocks 9 epoch 1 train_loss:0.0004916262696497142 val_loss:0.0005900303949601948  norm:0.00728266 max memory_allocated 14007.66357421875 time 24.750146865844727 
+[2025-08-31 10:02:24 root] (block_ap.py 326): INFO blocks 9 epoch 2 train_loss:0.0004828205856028944 val_loss:0.000581858737859875  norm:0.00629650 max memory_allocated 14007.66357421875 time 24.73917818069458 
+[2025-08-31 10:02:48 root] (block_ap.py 326): INFO blocks 9 epoch 3 train_loss:0.00046206475235521793 val_loss:0.0005768655682913959  norm:0.00377619 max memory_allocated 14007.66357421875 time 24.71441102027893 
+[2025-08-31 10:03:13 root] (block_ap.py 326): INFO blocks 9 epoch 4 train_loss:0.0004505164688453078 val_loss:0.0005745948874391615  norm:0.00220754 max memory_allocated 14007.66357421875 time 24.77931833267212 
+[2025-08-31 10:03:25 root] (block_ap.py 253): INFO === Start quantize blocks 10===
+[2025-08-31 10:03:36 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:03:39 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0002951622009277344 
+[2025-08-31 10:03:40 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00031685829162597656 
+[2025-08-31 10:03:42 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:9.560585021972656e-05 
+[2025-08-31 10:03:44 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:3.6835670471191406e-05 
+[2025-08-31 10:03:46 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:9.179115295410156e-06 
+[2025-08-31 10:03:50 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:7.903575897216797e-05 
+[2025-08-31 10:03:54 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:6.866455078125e-05 
+[2025-08-31 10:03:57 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:1.33514404296875e-05 
+[2025-08-31 10:03:58 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:1.1682510375976562e-05 
+[2025-08-31 10:03:59 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:5.304813385009766e-06 
+[2025-08-31 10:04:00 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:1.7881393432617188e-05 
+[2025-08-31 10:04:00 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:04:00 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:04:28 root] (block_ap.py 326): INFO blocks 10 epoch 0 train_loss:0.000602558720856905 val_loss:0.0007454675505869091  norm:0.00842540 max memory_allocated 14007.66357421875 time 27.785456657409668 
+[2025-08-31 10:04:53 root] (block_ap.py 326): INFO blocks 10 epoch 1 train_loss:0.0006017385749146342 val_loss:0.0007433919818140566  norm:0.01234959 max memory_allocated 14007.66357421875 time 24.84220242500305 
+[2025-08-31 10:05:18 root] (block_ap.py 326): INFO blocks 10 epoch 2 train_loss:0.0005784421809948981 val_loss:0.0007342384196817875  norm:0.00718900 max memory_allocated 14007.66357421875 time 24.812278032302856 
+[2025-08-31 10:05:43 root] (block_ap.py 326): INFO blocks 10 epoch 3 train_loss:0.000559074804186821 val_loss:0.0007282924489118159  norm:0.00378183 max memory_allocated 14007.66357421875 time 24.832017421722412 
+[2025-08-31 10:06:07 root] (block_ap.py 326): INFO blocks 10 epoch 4 train_loss:0.0005495044752024114 val_loss:0.0007259973790496588  norm:0.00234677 max memory_allocated 14007.66357421875 time 24.829582691192627 
+[2025-08-31 10:06:18 root] (block_ap.py 253): INFO === Start quantize blocks 11===
+[2025-08-31 10:06:29 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:06:32 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003285408020019531 
+[2025-08-31 10:06:33 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003299713134765625 
+[2025-08-31 10:06:35 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00012731552124023438 
+[2025-08-31 10:06:37 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:4.583597183227539e-05 
+[2025-08-31 10:06:39 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.0073184967041016e-05 
+[2025-08-31 10:06:43 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:8.422136306762695e-05 
+[2025-08-31 10:06:47 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:7.510185241699219e-05 
+[2025-08-31 10:06:49 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:1.5020370483398438e-05 
+[2025-08-31 10:06:51 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:1.341104507446289e-05 
+[2025-08-31 10:06:52 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:5.602836608886719e-06 
+[2025-08-31 10:06:53 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.0682811737060547e-05 
+[2025-08-31 10:06:53 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:06:53 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:07:22 root] (block_ap.py 326): INFO blocks 11 epoch 0 train_loss:0.000711324333678931 val_loss:0.0009069633088074625  norm:0.00808460 max memory_allocated 14007.66357421875 time 28.492420434951782 
+[2025-08-31 10:07:46 root] (block_ap.py 326): INFO blocks 11 epoch 1 train_loss:0.0007125827251002192 val_loss:0.0009044438484124839  norm:0.01011932 max memory_allocated 14007.66357421875 time 24.800593852996826 
+[2025-08-31 10:08:11 root] (block_ap.py 326): INFO blocks 11 epoch 2 train_loss:0.0006814046064391732 val_loss:0.000895664852578193  norm:0.00614466 max memory_allocated 14007.66357421875 time 24.812336444854736 
+[2025-08-31 10:08:36 root] (block_ap.py 326): INFO blocks 11 epoch 3 train_loss:0.0006614788435399532 val_loss:0.0008900060201995075  norm:0.00396989 max memory_allocated 14007.66357421875 time 24.768743753433228 
+[2025-08-31 10:09:01 root] (block_ap.py 326): INFO blocks 11 epoch 4 train_loss:0.0006512824911624193 val_loss:0.0008876420324668288  norm:0.00283820 max memory_allocated 14007.66357421875 time 24.819780588150024 
+[2025-08-31 10:09:10 root] (block_ap.py 253): INFO === Start quantize blocks 12===
+[2025-08-31 10:09:21 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:09:24 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00034332275390625 
+[2025-08-31 10:09:26 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003669261932373047 
+[2025-08-31 10:09:27 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00012481212615966797 
+[2025-08-31 10:09:30 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:4.863739013671875e-05 
+[2025-08-31 10:09:31 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.0848045349121094e-05 
+[2025-08-31 10:09:36 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:8.83340835571289e-05 
+[2025-08-31 10:09:40 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:8.13603401184082e-05 
+[2025-08-31 10:09:42 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:1.6987323760986328e-05 
+[2025-08-31 10:09:44 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:1.537799835205078e-05 
+[2025-08-31 10:09:45 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:6.079673767089844e-06 
+[2025-08-31 10:09:46 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.3663043975830078e-05 
+[2025-08-31 10:09:46 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:09:46 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:10:14 root] (block_ap.py 326): INFO blocks 12 epoch 0 train_loss:0.0008372085867449641 val_loss:0.0011041037505492568  norm:0.00780160 max memory_allocated 14007.66357421875 time 28.057576894760132 
+[2025-08-31 10:10:39 root] (block_ap.py 326): INFO blocks 12 epoch 1 train_loss:0.0008357455371879041 val_loss:0.0011021889513358474  norm:0.00968792 max memory_allocated 14007.66357421875 time 24.83204746246338 
+[2025-08-31 10:11:04 root] (block_ap.py 326): INFO blocks 12 epoch 2 train_loss:0.0008055571233853698 val_loss:0.0010920390486717224  norm:0.00639885 max memory_allocated 14007.66357421875 time 24.818519115447998 
+[2025-08-31 10:11:28 root] (block_ap.py 326): INFO blocks 12 epoch 3 train_loss:0.0007833535200916231 val_loss:0.0010864814976230264  norm:0.00405464 max memory_allocated 14007.66357421875 time 24.809094190597534 
+[2025-08-31 10:11:53 root] (block_ap.py 326): INFO blocks 12 epoch 4 train_loss:0.0007718976121395826 val_loss:0.0010834858985617757  norm:0.00277474 max memory_allocated 14007.66357421875 time 24.834449768066406 
+[2025-08-31 10:12:03 root] (block_ap.py 253): INFO === Start quantize blocks 13===
+[2025-08-31 10:12:15 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:12:17 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003504753112792969 
+[2025-08-31 10:12:19 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003654956817626953 
+[2025-08-31 10:12:21 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00013959407806396484 
+[2025-08-31 10:12:23 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:6.252527236938477e-05 
+[2025-08-31 10:12:25 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.2159347534179688e-05 
+[2025-08-31 10:12:29 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:9.340047836303711e-05 
+[2025-08-31 10:12:33 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:8.821487426757812e-05 
+[2025-08-31 10:12:35 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:2.187490463256836e-05 
+[2025-08-31 10:12:37 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:1.9550323486328125e-05 
+[2025-08-31 10:12:38 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:6.735324859619141e-06 
+[2025-08-31 10:12:39 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:2.8192996978759766e-05 
+[2025-08-31 10:12:39 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:12:39 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:13:08 root] (block_ap.py 326): INFO blocks 13 epoch 0 train_loss:0.0009799516992643476 val_loss:0.0013192312326282263  norm:0.01014656 max memory_allocated 14007.66357421875 time 28.544179916381836 
+[2025-08-31 10:13:33 root] (block_ap.py 326): INFO blocks 13 epoch 1 train_loss:0.0009731096215546131 val_loss:0.0013141189701855183  norm:0.01102167 max memory_allocated 14007.66357421875 time 24.857808351516724 
+[2025-08-31 10:13:57 root] (block_ap.py 326): INFO blocks 13 epoch 2 train_loss:0.0009370558545924723 val_loss:0.001303655095398426  norm:0.00692177 max memory_allocated 14007.66357421875 time 24.852622985839844 
+[2025-08-31 10:14:22 root] (block_ap.py 326): INFO blocks 13 epoch 3 train_loss:0.0009136680164374411 val_loss:0.0012972563272342086  norm:0.00504354 max memory_allocated 14007.66357421875 time 24.869874238967896 
+[2025-08-31 10:14:47 root] (block_ap.py 326): INFO blocks 13 epoch 4 train_loss:0.0009020337020047009 val_loss:0.0012937563005834818  norm:0.00339129 max memory_allocated 14007.66357421875 time 24.883577346801758 
+[2025-08-31 10:14:58 root] (block_ap.py 253): INFO === Start quantize blocks 14===
+[2025-08-31 10:15:09 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:15:12 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003628730773925781 
+[2025-08-31 10:15:13 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003826618194580078 
+[2025-08-31 10:15:15 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00014066696166992188 
+[2025-08-31 10:15:17 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:5.614757537841797e-05 
+[2025-08-31 10:15:19 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.3709068298339844e-05 
+[2025-08-31 10:15:23 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00010126829147338867 
+[2025-08-31 10:15:27 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:9.649991989135742e-05 
+[2025-08-31 10:15:30 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:2.5153160095214844e-05 
+[2025-08-31 10:15:31 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:2.2590160369873047e-05 
+[2025-08-31 10:15:32 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:8.52346420288086e-06 
+[2025-08-31 10:15:33 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:3.141164779663086e-05 
+[2025-08-31 10:15:33 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:15:33 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:16:02 root] (block_ap.py 326): INFO blocks 14 epoch 0 train_loss:0.0011214197147637606 val_loss:0.0015650609275326133  norm:0.00787455 max memory_allocated 14007.66357421875 time 28.78133773803711 
+[2025-08-31 10:16:29 root] (block_ap.py 326): INFO blocks 14 epoch 1 train_loss:0.001104228664189577 val_loss:0.001566633814945817  norm:0.00939053 max memory_allocated 14007.66357421875 time 26.522566556930542 
+[2025-08-31 10:16:55 root] (block_ap.py 326): INFO blocks 14 epoch 2 train_loss:0.001075351145118475 val_loss:0.0015484625473618507  norm:0.00674915 max memory_allocated 14007.66357421875 time 26.50903868675232 
+[2025-08-31 10:17:22 root] (block_ap.py 326): INFO blocks 14 epoch 3 train_loss:0.001050225575454533 val_loss:0.0015402130084112287  norm:0.00462189 max memory_allocated 14007.66357421875 time 26.48934817314148 
+[2025-08-31 10:17:48 root] (block_ap.py 326): INFO blocks 14 epoch 4 train_loss:0.0010362338507547975 val_loss:0.0015366475563496351  norm:0.00314567 max memory_allocated 14007.66357421875 time 26.494445323944092 
+[2025-08-31 10:18:00 root] (block_ap.py 253): INFO === Start quantize blocks 15===
+[2025-08-31 10:18:12 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:18:14 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003371238708496094 
+[2025-08-31 10:18:16 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003666877746582031 
+[2025-08-31 10:18:17 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00014507770538330078 
+[2025-08-31 10:18:20 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:9.518861770629883e-05 
+[2025-08-31 10:18:21 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.5139579772949219e-05 
+[2025-08-31 10:18:26 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00011140108108520508 
+[2025-08-31 10:18:30 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0001061558723449707 
+[2025-08-31 10:18:32 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:3.248453140258789e-05 
+[2025-08-31 10:18:33 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:2.9325485229492188e-05 
+[2025-08-31 10:18:35 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:9.238719940185547e-06 
+[2025-08-31 10:18:36 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:3.731250762939453e-05 
+[2025-08-31 10:18:36 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:18:36 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:19:04 root] (block_ap.py 326): INFO blocks 15 epoch 0 train_loss:0.0013125563273206353 val_loss:0.0018668879056349397  norm:0.00932776 max memory_allocated 14007.66357421875 time 28.449524641036987 
+[2025-08-31 10:19:29 root] (block_ap.py 326): INFO blocks 15 epoch 1 train_loss:0.0012930372031405568 val_loss:0.0018598951864987612  norm:0.01098846 max memory_allocated 14007.66357421875 time 24.862525463104248 
+[2025-08-31 10:19:54 root] (block_ap.py 326): INFO blocks 15 epoch 2 train_loss:0.0012579913018271327 val_loss:0.0018490292131900787  norm:0.00818126 max memory_allocated 14007.66357421875 time 24.836698532104492 
+[2025-08-31 10:20:19 root] (block_ap.py 326): INFO blocks 15 epoch 3 train_loss:0.0012320055393502116 val_loss:0.0018411959754303098  norm:0.00487344 max memory_allocated 14007.66357421875 time 24.861299753189087 
+[2025-08-31 10:20:43 root] (block_ap.py 326): INFO blocks 15 epoch 4 train_loss:0.0012176120653748512 val_loss:0.0018373237689957023  norm:0.00363646 max memory_allocated 14007.66357421875 time 24.854645013809204 
+[2025-08-31 10:20:53 root] (block_ap.py 253): INFO === Start quantize blocks 16===
+[2025-08-31 10:21:04 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:21:07 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003561973571777344 
+[2025-08-31 10:21:08 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003821849822998047 
+[2025-08-31 10:21:10 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00016891956329345703 
+[2025-08-31 10:21:12 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:0.0001049041748046875 
+[2025-08-31 10:21:14 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.9729137420654297e-05 
+[2025-08-31 10:21:18 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0001277923583984375 
+[2025-08-31 10:21:23 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00011998414993286133 
+[2025-08-31 10:21:25 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:4.380941390991211e-05 
+[2025-08-31 10:21:26 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:3.898143768310547e-05 
+[2025-08-31 10:21:27 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:1.3887882232666016e-05 
+[2025-08-31 10:21:29 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:4.684925079345703e-05 
+[2025-08-31 10:21:29 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:21:29 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:21:56 root] (block_ap.py 326): INFO blocks 16 epoch 0 train_loss:0.0016547016566619277 val_loss:0.0024045321624726057  norm:0.01103290 max memory_allocated 14007.66357421875 time 27.557205200195312 
+[2025-08-31 10:22:10 root] (block_ap.py 326): INFO blocks 16 epoch 1 train_loss:0.0016302029835060239 val_loss:0.002403873484581709  norm:0.01196261 max memory_allocated 14007.66357421875 time 13.8412184715271 
+[2025-08-31 10:22:22 root] (block_ap.py 326): INFO blocks 16 epoch 2 train_loss:0.0016052338760346174 val_loss:0.002383924089372158  norm:0.01184346 max memory_allocated 14007.66357421875 time 11.627908945083618 
+[2025-08-31 10:22:42 root] (block_ap.py 326): INFO blocks 16 epoch 3 train_loss:0.0015587162924930453 val_loss:0.0023689616937190294  norm:0.00708148 max memory_allocated 14007.66357421875 time 20.671120643615723 
+[2025-08-31 10:23:05 root] (block_ap.py 326): INFO blocks 16 epoch 4 train_loss:0.0015362376580014825 val_loss:0.0023628834169358015  norm:0.00459316 max memory_allocated 14007.66357421875 time 22.920645713806152 
+[2025-08-31 10:23:16 root] (block_ap.py 253): INFO === Start quantize blocks 17===
+[2025-08-31 10:23:26 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:23:29 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003745555877685547 
+[2025-08-31 10:23:30 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0003933906555175781 
+[2025-08-31 10:23:31 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00017821788787841797 
+[2025-08-31 10:23:35 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:9.47713851928711e-05 
+[2025-08-31 10:23:36 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.3649463653564453e-05 
+[2025-08-31 10:23:39 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00014662742614746094 
+[2025-08-31 10:23:42 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00013458728790283203 
+[2025-08-31 10:23:44 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:4.982948303222656e-05 
+[2025-08-31 10:23:45 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:4.32133674621582e-05 
+[2025-08-31 10:23:46 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.1622905731201172e-05 
+[2025-08-31 10:23:47 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:5.322694778442383e-05 
+[2025-08-31 10:23:47 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:23:47 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:24:13 root] (block_ap.py 326): INFO blocks 17 epoch 0 train_loss:0.0019394184928387403 val_loss:0.0028730786871165037  norm:0.01085970 max memory_allocated 14007.66357421875 time 26.230306386947632 
+[2025-08-31 10:24:35 root] (block_ap.py 326): INFO blocks 17 epoch 1 train_loss:0.0019184069242328405 val_loss:0.0028674344066530466  norm:0.01359080 max memory_allocated 14007.66357421875 time 21.562624216079712 
+[2025-08-31 10:24:48 root] (block_ap.py 326): INFO blocks 17 epoch 2 train_loss:0.0018783069681376219 val_loss:0.0028547709807753563  norm:0.01103388 max memory_allocated 14007.66357421875 time 13.240692853927612 
+[2025-08-31 10:25:00 root] (block_ap.py 326): INFO blocks 17 epoch 3 train_loss:0.0018425375455990434 val_loss:0.0028419101145118475  norm:0.01079483 max memory_allocated 14007.66357421875 time 11.901362895965576 
+[2025-08-31 10:25:12 root] (block_ap.py 326): INFO blocks 17 epoch 4 train_loss:0.0018179889302700758 val_loss:0.0028348946943879128  norm:0.01338352 max memory_allocated 14007.66357421875 time 11.635859489440918 
+[2025-08-31 10:25:19 root] (block_ap.py 253): INFO === Start quantize blocks 18===
+[2025-08-31 10:25:26 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:25:27 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00039696693420410156 
+[2025-08-31 10:25:28 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0004165172576904297 
+[2025-08-31 10:25:28 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00021696090698242188 
+[2025-08-31 10:25:31 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:0.00016427040100097656 
+[2025-08-31 10:25:31 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.531839370727539e-05 
+[2025-08-31 10:25:31 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0001666545867919922 
+[2025-08-31 10:25:31 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00014913082122802734 
+[2025-08-31 10:25:34 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:5.888938903808594e-05 
+[2025-08-31 10:25:34 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:5.036592483520508e-05 
+[2025-08-31 10:25:34 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.2576580047607422e-05 
+[2025-08-31 10:25:35 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:6.16908073425293e-05 
+[2025-08-31 10:25:35 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:25:35 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:25:48 root] (block_ap.py 326): INFO blocks 18 epoch 0 train_loss:0.0024523634929209948 val_loss:0.0036753888707607985  norm:0.01313014 max memory_allocated 14007.66357421875 time 12.89346432685852 
+[2025-08-31 10:25:59 root] (block_ap.py 326): INFO blocks 18 epoch 1 train_loss:0.002417871728539467 val_loss:0.003671096172183752  norm:0.01535748 max memory_allocated 14007.66357421875 time 11.610949277877808 
+[2025-08-31 10:26:11 root] (block_ap.py 326): INFO blocks 18 epoch 2 train_loss:0.002385011874139309 val_loss:0.0036534415557980537  norm:0.01546269 max memory_allocated 14007.66357421875 time 11.628813028335571 
+[2025-08-31 10:26:23 root] (block_ap.py 326): INFO blocks 18 epoch 3 train_loss:0.002330668969079852 val_loss:0.003636155044659972  norm:0.00844224 max memory_allocated 14007.66357421875 time 11.62841248512268 
+[2025-08-31 10:26:34 root] (block_ap.py 326): INFO blocks 18 epoch 4 train_loss:0.002304686699062586 val_loss:0.0036295861937105656  norm:0.00589661 max memory_allocated 14007.66357421875 time 11.641244649887085 
+[2025-08-31 10:26:41 root] (block_ap.py 253): INFO === Start quantize blocks 19===
+[2025-08-31 10:26:50 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:26:53 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.000385284423828125 
+[2025-08-31 10:26:53 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00040602684020996094 
+[2025-08-31 10:26:53 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0002200603485107422 
+[2025-08-31 10:26:56 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.0001825094223022461 
+[2025-08-31 10:26:56 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.424551010131836e-05 
+[2025-08-31 10:26:56 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00017964839935302734 
+[2025-08-31 10:26:57 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00015914440155029297 
+[2025-08-31 10:26:59 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:6.878376007080078e-05 
+[2025-08-31 10:26:59 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:5.602836608886719e-05 
+[2025-08-31 10:27:00 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.2814998626708984e-05 
+[2025-08-31 10:27:00 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:6.967782974243164e-05 
+[2025-08-31 10:27:00 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:27:00 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:27:13 root] (block_ap.py 326): INFO blocks 19 epoch 0 train_loss:0.0029927282594144344 val_loss:0.00455875601619482  norm:0.00930029 max memory_allocated 14007.66357421875 time 12.888677597045898 
+[2025-08-31 10:27:25 root] (block_ap.py 326): INFO blocks 19 epoch 1 train_loss:0.0029404067900031805 val_loss:0.004547810181975365  norm:0.01160012 max memory_allocated 14007.66357421875 time 11.607043981552124 
+[2025-08-31 10:27:36 root] (block_ap.py 326): INFO blocks 19 epoch 2 train_loss:0.002901084953919053 val_loss:0.0045321667566895485  norm:0.01236275 max memory_allocated 14007.66357421875 time 11.615577697753906 
+[2025-08-31 10:27:48 root] (block_ap.py 326): INFO blocks 19 epoch 3 train_loss:0.0028557395562529564 val_loss:0.004519411828368902  norm:0.00801067 max memory_allocated 14007.66357421875 time 11.627538442611694 
+[2025-08-31 10:28:00 root] (block_ap.py 326): INFO blocks 19 epoch 4 train_loss:0.0028279959224164486 val_loss:0.004512876272201538  norm:0.00631908 max memory_allocated 14007.66357421875 time 11.635778665542603 
+[2025-08-31 10:28:10 root] (block_ap.py 253): INFO === Start quantize blocks 20===
+[2025-08-31 10:28:19 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:28:19 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003960132598876953 
+[2025-08-31 10:28:19 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0004138946533203125 
+[2025-08-31 10:28:19 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00023043155670166016 
+[2025-08-31 10:28:20 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00018489360809326172 
+[2025-08-31 10:28:20 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.7940998077392578e-05 
+[2025-08-31 10:28:20 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0001933574676513672 
+[2025-08-31 10:28:20 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0001690387725830078 
+[2025-08-31 10:28:23 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:9.006261825561523e-05 
+[2025-08-31 10:28:23 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:6.902217864990234e-05 
+[2025-08-31 10:28:23 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.7404556274414062e-05 
+[2025-08-31 10:28:24 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:8.165836334228516e-05 
+[2025-08-31 10:28:24 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:28:24 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:28:37 root] (block_ap.py 326): INFO blocks 20 epoch 0 train_loss:0.0036757176276296377 val_loss:0.005730577744543552  norm:0.01228942 max memory_allocated 14007.66357421875 time 13.459383249282837 
+[2025-08-31 10:28:50 root] (block_ap.py 326): INFO blocks 20 epoch 1 train_loss:0.003632809268310666 val_loss:0.005723736248910427  norm:0.02215798 max memory_allocated 14007.66357421875 time 12.31993293762207 
+[2025-08-31 10:29:02 root] (block_ap.py 326): INFO blocks 20 epoch 2 train_loss:0.003602773416787386 val_loss:0.005700257606804371  norm:0.02070640 max memory_allocated 14007.66357421875 time 12.295010566711426 
+[2025-08-31 10:29:14 root] (block_ap.py 326): INFO blocks 20 epoch 3 train_loss:0.003538544289767742 val_loss:0.005682029295712709  norm:0.01394277 max memory_allocated 14007.66357421875 time 12.341362476348877 
+[2025-08-31 10:29:27 root] (block_ap.py 326): INFO blocks 20 epoch 4 train_loss:0.0034932566341012716 val_loss:0.005673989653587341  norm:0.00648741 max memory_allocated 14007.66357421875 time 12.323922157287598 
+[2025-08-31 10:29:34 root] (block_ap.py 253): INFO === Start quantize blocks 21===
+[2025-08-31 10:29:42 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:29:43 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00042366981506347656 
+[2025-08-31 10:29:43 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0004372596740722656 
+[2025-08-31 10:29:43 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0002732276916503906 
+[2025-08-31 10:29:46 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.0002167224884033203 
+[2025-08-31 10:29:46 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.5079975128173828e-05 
+[2025-08-31 10:29:47 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0002079010009765625 
+[2025-08-31 10:29:47 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00017845630645751953 
+[2025-08-31 10:29:49 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:8.946657180786133e-05 
+[2025-08-31 10:29:49 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:6.765127182006836e-05 
+[2025-08-31 10:29:50 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.5437602996826172e-05 
+[2025-08-31 10:29:50 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:8.791685104370117e-05 
+[2025-08-31 10:29:50 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:29:50 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:30:03 root] (block_ap.py 326): INFO blocks 21 epoch 0 train_loss:0.004435829818248749 val_loss:0.006995660252869129  norm:0.01039296 max memory_allocated 14007.66357421875 time 12.8851158618927 
+[2025-08-31 10:30:15 root] (block_ap.py 326): INFO blocks 21 epoch 1 train_loss:0.004375525750219822 val_loss:0.006983557716012001  norm:0.01404041 max memory_allocated 14007.66357421875 time 11.604365825653076 
+[2025-08-31 10:30:27 root] (block_ap.py 326): INFO blocks 21 epoch 2 train_loss:0.004329003859311342 val_loss:0.006966622080653906  norm:0.01404881 max memory_allocated 14007.66357421875 time 11.6116464138031 
+[2025-08-31 10:30:39 root] (block_ap.py 326): INFO blocks 21 epoch 3 train_loss:0.004269120283424854 val_loss:0.00695080729201436  norm:0.00887964 max memory_allocated 14007.66357421875 time 12.840075016021729 
+[2025-08-31 10:30:57 root] (block_ap.py 326): INFO blocks 21 epoch 4 train_loss:0.004235780332237482 val_loss:0.006943036336451769  norm:0.00642130 max memory_allocated 14007.66357421875 time 17.655375957489014 
+[2025-08-31 10:31:07 root] (block_ap.py 253): INFO === Start quantize blocks 22===
+[2025-08-31 10:31:16 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:31:19 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0004515647888183594 
+[2025-08-31 10:31:19 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00046515464782714844 
+[2025-08-31 10:31:20 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00028014183044433594 
+[2025-08-31 10:31:22 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.000247955322265625 
+[2025-08-31 10:31:23 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:2.0384788513183594e-05 
+[2025-08-31 10:31:24 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0002238750457763672 
+[2025-08-31 10:31:24 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00018966197967529297 
+[2025-08-31 10:31:25 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.0001112818717956543 
+[2025-08-31 10:31:25 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:7.75456428527832e-05 
+[2025-08-31 10:31:26 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:2.1755695343017578e-05 
+[2025-08-31 10:31:26 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.00010120868682861328 
+[2025-08-31 10:31:26 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:31:26 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:31:40 root] (block_ap.py 326): INFO blocks 22 epoch 0 train_loss:0.005438303574919701 val_loss:0.008625003509223461  norm:0.01539620 max memory_allocated 14007.66357421875 time 13.172819375991821 
+[2025-08-31 10:31:51 root] (block_ap.py 326): INFO blocks 22 epoch 1 train_loss:0.005380082875490189 val_loss:0.008617972955107689  norm:0.02181412 max memory_allocated 14007.66357421875 time 11.753106832504272 
+[2025-08-31 10:32:03 root] (block_ap.py 326): INFO blocks 22 epoch 2 train_loss:0.005324443802237511 val_loss:0.008594755083322525  norm:0.02031446 max memory_allocated 14007.66357421875 time 11.688235759735107 
+[2025-08-31 10:32:15 root] (block_ap.py 326): INFO blocks 22 epoch 3 train_loss:0.005246969871222973 val_loss:0.008575281128287315  norm:0.01200049 max memory_allocated 14007.66357421875 time 11.71395492553711 
+[2025-08-31 10:32:26 root] (block_ap.py 326): INFO blocks 22 epoch 4 train_loss:0.005204423796385527 val_loss:0.00856688991189003  norm:0.00793713 max memory_allocated 14007.66357421875 time 11.64817762374878 
+[2025-08-31 10:32:34 root] (block_ap.py 253): INFO === Start quantize blocks 23===
+[2025-08-31 10:32:40 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:32:42 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0005006790161132812 
+[2025-08-31 10:32:42 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0005121231079101562 
+[2025-08-31 10:32:43 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0003495216369628906 
+[2025-08-31 10:32:43 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.00028204917907714844 
+[2025-08-31 10:32:43 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.728534698486328e-05 
+[2025-08-31 10:32:43 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00023543834686279297 
+[2025-08-31 10:32:44 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00020194053649902344 
+[2025-08-31 10:32:46 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00011485815048217773 
+[2025-08-31 10:32:48 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:8.14199447631836e-05 
+[2025-08-31 10:32:49 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:1.806020736694336e-05 
+[2025-08-31 10:32:50 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:0.00011199712753295898 
+[2025-08-31 10:32:50 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:32:50 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:33:17 root] (block_ap.py 326): INFO blocks 23 epoch 0 train_loss:0.006482253782451153 val_loss:0.010291922837495804  norm:0.01246619 max memory_allocated 14007.66357421875 time 27.1580810546875 
+[2025-08-31 10:33:43 root] (block_ap.py 326): INFO blocks 23 epoch 1 train_loss:0.006390636786818504 val_loss:0.01027490571141243  norm:0.01332047 max memory_allocated 14007.66357421875 time 25.22073268890381 
+[2025-08-31 10:34:08 root] (block_ap.py 326): INFO blocks 23 epoch 2 train_loss:0.006332646124064922 val_loss:0.010256059467792511  norm:0.01679095 max memory_allocated 14007.66357421875 time 25.230626583099365 
+[2025-08-31 10:34:33 root] (block_ap.py 326): INFO blocks 23 epoch 3 train_loss:0.006259521469473839 val_loss:0.010239285416901112  norm:0.00990724 max memory_allocated 14007.66357421875 time 25.223808526992798 
+[2025-08-31 10:34:54 root] (block_ap.py 326): INFO blocks 23 epoch 4 train_loss:0.006218309979885817 val_loss:0.010232370346784592  norm:0.00745167 max memory_allocated 14007.66357421875 time 20.603463172912598 
+[2025-08-31 10:35:03 root] (block_ap.py 253): INFO === Start quantize blocks 24===
+[2025-08-31 10:35:13 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:35:15 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0004572868347167969 
+[2025-08-31 10:35:15 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00046825408935546875 
+[2025-08-31 10:35:15 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00032830238342285156 
+[2025-08-31 10:35:16 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.0003077983856201172 
+[2025-08-31 10:35:16 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:2.3245811462402344e-05 
+[2025-08-31 10:35:16 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0002484321594238281 
+[2025-08-31 10:35:16 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00021338462829589844 
+[2025-08-31 10:35:17 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00012069940567016602 
+[2025-08-31 10:35:17 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:8.469820022583008e-05 
+[2025-08-31 10:35:18 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:2.4080276489257812e-05 
+[2025-08-31 10:35:18 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.00012099742889404297 
+[2025-08-31 10:35:18 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:35:18 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:35:33 root] (block_ap.py 326): INFO blocks 24 epoch 0 train_loss:0.007665486074984074 val_loss:0.0122597087174654  norm:0.01417458 max memory_allocated 14007.66357421875 time 14.679461240768433 
+[2025-08-31 10:35:45 root] (block_ap.py 326): INFO blocks 24 epoch 1 train_loss:0.007570088841021061 val_loss:0.012241732329130173  norm:0.01698232 max memory_allocated 14007.66357421875 time 12.371671915054321 
+[2025-08-31 10:35:57 root] (block_ap.py 326): INFO blocks 24 epoch 2 train_loss:0.007499754894524813 val_loss:0.012223630212247372  norm:0.01615815 max memory_allocated 14007.66357421875 time 12.246619939804077 
+[2025-08-31 10:36:10 root] (block_ap.py 326): INFO blocks 24 epoch 3 train_loss:0.007419981062412262 val_loss:0.012200942263007164  norm:0.01135285 max memory_allocated 14007.66357421875 time 12.243427753448486 
+[2025-08-31 10:36:22 root] (block_ap.py 326): INFO blocks 24 epoch 4 train_loss:0.007375744637101889 val_loss:0.012192817404866219  norm:0.00887492 max memory_allocated 14007.66357421875 time 12.217654943466187 
+[2025-08-31 10:36:30 root] (block_ap.py 253): INFO === Start quantize blocks 25===
+[2025-08-31 10:36:37 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:36:38 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0005407333374023438 
+[2025-08-31 10:36:39 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0005450248718261719 
+[2025-08-31 10:36:39 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00041365623474121094 
+[2025-08-31 10:36:42 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.000331878662109375 
+[2025-08-31 10:36:42 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:1.6629695892333984e-05 
+[2025-08-31 10:36:42 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00026226043701171875 
+[2025-08-31 10:36:42 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00022780895233154297 
+[2025-08-31 10:36:45 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00012165307998657227 
+[2025-08-31 10:36:45 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:9.077787399291992e-05 
+[2025-08-31 10:36:45 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.0503997802734375e-05 
+[2025-08-31 10:36:46 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.00013196468353271484 
+[2025-08-31 10:36:46 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:36:46 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:36:59 root] (block_ap.py 326): INFO blocks 25 epoch 0 train_loss:0.008997352793812752 val_loss:0.014342392794787884  norm:0.01457425 max memory_allocated 14007.66357421875 time 13.269449234008789 
+[2025-08-31 10:37:11 root] (block_ap.py 326): INFO blocks 25 epoch 1 train_loss:0.008890303783118725 val_loss:0.014325717464089394  norm:0.01732509 max memory_allocated 14007.66357421875 time 11.639146566390991 
+[2025-08-31 10:37:22 root] (block_ap.py 326): INFO blocks 25 epoch 2 train_loss:0.00882019940763712 val_loss:0.014306589961051941  norm:0.01824290 max memory_allocated 14007.66357421875 time 11.644468307495117 
+[2025-08-31 10:37:34 root] (block_ap.py 326): INFO blocks 25 epoch 3 train_loss:0.008729679509997368 val_loss:0.014286953955888748  norm:0.01259747 max memory_allocated 14007.66357421875 time 11.812939643859863 
+[2025-08-31 10:37:48 root] (block_ap.py 326): INFO blocks 25 epoch 4 train_loss:0.008677424862980843 val_loss:0.01427451055496931  norm:0.00938620 max memory_allocated 14007.66357421875 time 14.094131708145142 
+[2025-08-31 10:38:00 root] (block_ap.py 253): INFO === Start quantize blocks 26===
+[2025-08-31 10:38:10 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:38:12 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0004944801330566406 
+[2025-08-31 10:38:13 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0005092620849609375 
+[2025-08-31 10:38:13 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0004010200500488281 
+[2025-08-31 10:38:16 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:0.0003733634948730469 
+[2025-08-31 10:38:16 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:3.30805778503418e-05 
+[2025-08-31 10:38:17 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0002791881561279297 
+[2025-08-31 10:38:18 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.00024116039276123047 
+[2025-08-31 10:38:19 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00013756752014160156 
+[2025-08-31 10:38:19 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:0.00010144710540771484 
+[2025-08-31 10:38:20 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:3.248453140258789e-05 
+[2025-08-31 10:38:20 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.00015306472778320312 
+[2025-08-31 10:38:20 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:38:20 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:38:34 root] (block_ap.py 326): INFO blocks 26 epoch 0 train_loss:0.010700703598558903 val_loss:0.017067905515432358  norm:0.01967002 max memory_allocated 14007.66357421875 time 13.576911449432373 
+[2025-08-31 10:38:46 root] (block_ap.py 326): INFO blocks 26 epoch 1 train_loss:0.01058238372206688 val_loss:0.017044732347130775  norm:0.02646927 max memory_allocated 14007.66357421875 time 11.712660074234009 
+[2025-08-31 10:38:58 root] (block_ap.py 326): INFO blocks 26 epoch 2 train_loss:0.010496181435883045 val_loss:0.017007503658533096  norm:0.02275879 max memory_allocated 14007.66357421875 time 12.263509750366211 
+[2025-08-31 10:39:23 root] (block_ap.py 326): INFO blocks 26 epoch 3 train_loss:0.010379822924733162 val_loss:0.01697428897023201  norm:0.01528540 max memory_allocated 14007.66357421875 time 24.890819549560547 
+[2025-08-31 10:39:48 root] (block_ap.py 326): INFO blocks 26 epoch 4 train_loss:0.010323229245841503 val_loss:0.016961757093667984  norm:0.01160055 max memory_allocated 14007.66357421875 time 24.942225217819214 
+[2025-08-31 10:39:58 root] (block_ap.py 253): INFO === Start quantize blocks 27===
+[2025-08-31 10:40:10 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:40:12 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.000553131103515625 
+[2025-08-31 10:40:14 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0005645751953125 
+[2025-08-31 10:40:16 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0004229545593261719 
+[2025-08-31 10:40:18 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.550000011920929); best_loss:0.0004189014434814453 
+[2025-08-31 10:40:20 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:2.4139881134033203e-05 
+[2025-08-31 10:40:24 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0002961158752441406 
+[2025-08-31 10:40:28 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0002582073211669922 
+[2025-08-31 10:40:31 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.00015079975128173828 
+[2025-08-31 10:40:32 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:0.0001169443130493164 
+[2025-08-31 10:40:33 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:2.849102020263672e-05 
+[2025-08-31 10:40:34 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.00016939640045166016 
+[2025-08-31 10:40:34 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:40:34 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:41:03 root] (block_ap.py 326): INFO blocks 27 epoch 0 train_loss:0.012601770460605621 val_loss:0.01996910199522972  norm:0.01787643 max memory_allocated 14007.66357421875 time 28.38868999481201 
+[2025-08-31 10:41:28 root] (block_ap.py 326): INFO blocks 27 epoch 1 train_loss:0.012453766539692879 val_loss:0.019949354231357574  norm:0.02041801 max memory_allocated 14007.66357421875 time 25.075448513031006 
+[2025-08-31 10:41:53 root] (block_ap.py 326): INFO blocks 27 epoch 2 train_loss:0.012363472953438759 val_loss:0.0199142899364233  norm:0.02107744 max memory_allocated 14007.66357421875 time 25.093393087387085 
+[2025-08-31 10:42:18 root] (block_ap.py 326): INFO blocks 27 epoch 3 train_loss:0.012248377315700054 val_loss:0.01989305578172207  norm:0.01548518 max memory_allocated 14007.66357421875 time 25.296334981918335 
+[2025-08-31 10:42:43 root] (block_ap.py 326): INFO blocks 27 epoch 4 train_loss:0.012182501144707203 val_loss:0.019874311983585358  norm:0.01224851 max memory_allocated 14007.66357421875 time 25.013731479644775 
+[2025-08-31 10:42:54 root] (block_ap.py 253): INFO === Start quantize blocks 28===
+[2025-08-31 10:43:04 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:43:08 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0005369186401367188 
+[2025-08-31 10:43:10 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0005578994750976562 
+[2025-08-31 10:43:12 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0004620552062988281 
+[2025-08-31 10:43:14 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.0005702972412109375 
+[2025-08-31 10:43:16 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:3.2961368560791016e-05 
+[2025-08-31 10:43:20 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00030493736267089844 
+[2025-08-31 10:43:24 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0002739429473876953 
+[2025-08-31 10:43:26 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.00020062923431396484 
+[2025-08-31 10:43:28 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:0.00014841556549072266 
+[2025-08-31 10:43:29 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:3.600120544433594e-05 
+[2025-08-31 10:43:30 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.00020110607147216797 
+[2025-08-31 10:43:30 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:43:30 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:43:58 root] (block_ap.py 326): INFO blocks 28 epoch 0 train_loss:0.015106935985386372 val_loss:0.02377680130302906  norm:0.02441803 max memory_allocated 14007.66357421875 time 27.94554877281189 
+[2025-08-31 10:44:23 root] (block_ap.py 326): INFO blocks 28 epoch 1 train_loss:0.014925990253686905 val_loss:0.02374039776623249  norm:0.02826808 max memory_allocated 14007.66357421875 time 24.86357617378235 
+[2025-08-31 10:44:48 root] (block_ap.py 326): INFO blocks 28 epoch 2 train_loss:0.014819728210568428 val_loss:0.02370080165565014  norm:0.03310531 max memory_allocated 14007.66357421875 time 24.83180856704712 
+[2025-08-31 10:45:13 root] (block_ap.py 326): INFO blocks 28 epoch 3 train_loss:0.01466539315879345 val_loss:0.0236600860953331  norm:0.02025173 max memory_allocated 14007.66357421875 time 24.851679801940918 
+[2025-08-31 10:45:38 root] (block_ap.py 326): INFO blocks 28 epoch 4 train_loss:0.014582869596779346 val_loss:0.023637067526578903  norm:0.01534767 max memory_allocated 14007.66357421875 time 24.87772512435913 
+[2025-08-31 10:45:48 root] (block_ap.py 253): INFO === Start quantize blocks 29===
+[2025-08-31 10:46:00 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:46:04 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.00047850608825683594 
+[2025-08-31 10:46:06 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0004916191101074219 
+[2025-08-31 10:46:07 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00043582916259765625 
+[2025-08-31 10:46:09 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:0.0004582405090332031 
+[2025-08-31 10:46:11 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:3.147125244140625e-05 
+[2025-08-31 10:46:15 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0003192424774169922 
+[2025-08-31 10:46:20 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0002892017364501953 
+[2025-08-31 10:46:22 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00026106834411621094 
+[2025-08-31 10:46:23 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:0.00019097328186035156 
+[2025-08-31 10:46:24 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:3.707408905029297e-05 
+[2025-08-31 10:46:25 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.0002536773681640625 
+[2025-08-31 10:46:25 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:46:25 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:46:53 root] (block_ap.py 326): INFO blocks 29 epoch 0 train_loss:0.017994672060012817 val_loss:0.02815098874270916  norm:0.02643155 max memory_allocated 14007.66357421875 time 27.406320333480835 
+[2025-08-31 10:47:18 root] (block_ap.py 326): INFO blocks 29 epoch 1 train_loss:0.017782840877771378 val_loss:0.02810824289917946  norm:0.02947577 max memory_allocated 14007.66357421875 time 24.939684629440308 
+[2025-08-31 10:47:43 root] (block_ap.py 326): INFO blocks 29 epoch 2 train_loss:0.017640478909015656 val_loss:0.02805418148636818  norm:0.02771149 max memory_allocated 14007.66357421875 time 24.937819719314575 
+[2025-08-31 10:48:08 root] (block_ap.py 326): INFO blocks 29 epoch 3 train_loss:0.017479464411735535 val_loss:0.02800028584897518  norm:0.02146173 max memory_allocated 14007.66357421875 time 24.91910409927368 
+[2025-08-31 10:48:32 root] (block_ap.py 326): INFO blocks 29 epoch 4 train_loss:0.017380792647600174 val_loss:0.027968142181634903  norm:0.01690394 max memory_allocated 14007.66357421875 time 24.932608604431152 
+[2025-08-31 10:48:42 root] (block_ap.py 253): INFO === Start quantize blocks 30===
+[2025-08-31 10:48:53 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:48:56 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0005216598510742188 
+[2025-08-31 10:48:58 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.00054168701171875 
+[2025-08-31 10:48:59 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.0004930496215820312 
+[2025-08-31 10:49:01 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.44999998807907104); best_loss:0.0007929801940917969 
+[2025-08-31 10:49:03 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:3.629922866821289e-05 
+[2025-08-31 10:49:07 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.00033593177795410156 
+[2025-08-31 10:49:12 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0003020763397216797 
+[2025-08-31 10:49:14 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.6499999761581421); best_loss:0.0005793571472167969 
+[2025-08-31 10:49:15 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:0.0003502368927001953 
+[2025-08-31 10:49:16 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.8499999642372131); best_loss:4.3392181396484375e-05 
+[2025-08-31 10:49:17 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.0003619194030761719 
+[2025-08-31 10:49:17 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:49:17 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:49:46 root] (block_ap.py 326): INFO blocks 30 epoch 0 train_loss:0.022553037852048874 val_loss:0.034814149141311646  norm:0.05347728 max memory_allocated 14007.66357421875 time 28.823296546936035 
+[2025-08-31 10:50:11 root] (block_ap.py 326): INFO blocks 30 epoch 1 train_loss:0.022248992696404457 val_loss:0.03470008820295334  norm:0.05156695 max memory_allocated 14007.66357421875 time 24.9410617351532 
+[2025-08-31 10:50:36 root] (block_ap.py 326): INFO blocks 30 epoch 2 train_loss:0.022059859707951546 val_loss:0.03460988029837608  norm:0.04763633 max memory_allocated 14007.66357421875 time 24.962152242660522 
+[2025-08-31 10:51:01 root] (block_ap.py 326): INFO blocks 30 epoch 3 train_loss:0.021848630160093307 val_loss:0.034517381340265274  norm:0.03939722 max memory_allocated 14007.66357421875 time 25.02157950401306 
+[2025-08-31 10:51:26 root] (block_ap.py 326): INFO blocks 30 epoch 4 train_loss:0.021698269993066788 val_loss:0.034464552998542786  norm:0.02940723 max memory_allocated 14007.66357421875 time 25.03230905532837 
+[2025-08-31 10:51:38 root] (block_ap.py 253): INFO === Start quantize blocks 31===
+[2025-08-31 10:51:49 root] (block_ap.py 282): INFO MSE init start
+[2025-08-31 10:51:51 root] (quant_utils.py 676): INFO [self_attn.q_proj_weight_quantizer] best_loss:0.0003712177276611328 
+[2025-08-31 10:51:52 root] (quant_utils.py 676): INFO [self_attn.k_proj_weight_quantizer] best_loss:0.0004067420959472656 
+[2025-08-31 10:51:54 root] (quant_utils.py 679): INFO [self_attn.v_proj_weight_quantizer] best_loss:0.00028204917907714844 
+[2025-08-31 10:51:56 root] (quant_utils.py 610): INFO [self_attn.o_proj_input_quantizer] clipping factor: (0.75); best_loss:0.0008845329284667969 
+[2025-08-31 10:51:57 root] (quant_utils.py 679): INFO [self_attn.o_proj_weight_quantizer] best_loss:4.267692565917969e-05 
+[2025-08-31 10:52:02 root] (quant_utils.py 679): INFO [mlp.gate_proj_weight_quantizer] best_loss:0.0002968311309814453 
+[2025-08-31 10:52:06 root] (quant_utils.py 679): INFO [mlp.up_proj_weight_quantizer] best_loss:0.0002655982971191406 
+[2025-08-31 10:52:07 root] (quant_utils.py 610): INFO [mlp.down_proj_input_quantizer] clipping factor: (0.75); best_loss:0.00360870361328125 
+[2025-08-31 10:52:09 root] (quant_utils.py 679): INFO [mlp.down_proj_weight_quantizer] best_loss:0.0016078948974609375 
+[2025-08-31 10:52:10 root] (quant_utils.py 632): INFO [input_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.0003695487976074219 
+[2025-08-31 10:52:11 root] (quant_utils.py 632): INFO [post_attention_layernorm_output_quantizer] clipping factor: (0.75); best_loss:0.0009512901306152344 
+[2025-08-31 10:52:11 root] (block_ap.py 289): INFO MSE init end
+[2025-08-31 10:52:11 root] (block_ap.py 314): INFO trainable parameter number: 202.417672M
+[2025-08-31 10:52:39 root] (block_ap.py 326): INFO blocks 31 epoch 0 train_loss:0.04034233093261719 val_loss:0.06035389006137848  norm:0.56582201 max memory_allocated 14007.66357421875 time 27.42281937599182 
+[2025-08-31 10:53:04 root] (block_ap.py 326): INFO blocks 31 epoch 1 train_loss:0.04003947228193283 val_loss:0.05982128158211708  norm:0.81822163 max memory_allocated 14007.66357421875 time 25.054690837860107 
+[2025-08-31 10:53:29 root] (block_ap.py 326): INFO blocks 31 epoch 2 train_loss:0.03932660445570946 val_loss:0.059339363127946854  norm:0.56217563 max memory_allocated 14007.66357421875 time 25.10600209236145 
+[2025-08-31 10:53:54 root] (block_ap.py 326): INFO blocks 31 epoch 3 train_loss:0.0381917878985405 val_loss:0.05887068063020706  norm:0.39766693 max memory_allocated 14007.66357421875 time 25.035764455795288 
+[2025-08-31 10:54:19 root] (block_ap.py 326): INFO blocks 31 epoch 4 train_loss:0.037437476217746735 val_loss:0.058634039014577866  norm:0.26452339 max memory_allocated 14007.66357421875 time 25.06037998199463 
+[2025-08-31 10:54:32 root] (main.py 372): INFO 4522.095319509506
+[2025-08-31 10:54:32 root] (main.py 376): INFO start saving model
+[2025-08-31 10:54:55 root] (main.py 385): INFO save model to ./asym_pre_quantized_models/Llama-2-7B-w6a6 success
+[2025-08-31 10:55:25 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since wikitext couldn't be found on the Hugging Face Hub
+[2025-08-31 10:55:25 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'wikitext-2-raw-v1' at /home/ubuntu/.cache/huggingface/datasets/wikitext/wikitext-2-raw-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3 (last modified on Wed Aug 27 10:36:08 2025).
+[2025-08-31 10:55:25 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since wikitext couldn't be found on the Hugging Face Hub
+[2025-08-31 10:55:25 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'wikitext-2-raw-v1' at /home/ubuntu/.cache/huggingface/datasets/wikitext/wikitext-2-raw-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3 (last modified on Wed Aug 27 10:36:08 2025).
+[2025-08-31 10:57:22 root] (main.py 41): INFO wikitext2 perplexity: 5.52
+[2025-08-31 10:57:22 evaluate.loading] (loading.py 546): WARNING Using the latest cached version of the module from /home/ubuntu/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--exact_match/9d3b67e0c429cd7460b2b05aab53419b48eea369b73e1d9f185a56ca90c373d4 (last modified on Wed Aug 27 10:46:01 2025) since it couldn't be found locally at evaluate-metric--exact_match, or remotely on the Hugging Face Hub.
+[2025-08-31 10:57:22 lm-eval] (huggingface.py 118): WARNING `pretrained` model kwarg is not of type `str`. Many other model arguments may be ignored. Please do not launch via accelerate or use `parallelize=True` if passing an existing model this way.
+[2025-08-31 10:57:22 lm-eval] (huggingface.py 337): WARNING Passed an already-initialized model through `pretrained`, assuming single-process call to evaluate() or custom distributed integration
+[2025-08-31 10:57:26 lm-eval] (evaluator.py 131): INFO Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+[2025-08-31 10:57:26 datasets.load] (load.py 1340): WARNING Using the latest cached version of the module from /home/ubuntu/.cache/huggingface/modules/datasets_modules/datasets/piqa/6c611c1a9bf220943c4174e117d3b660859665baf1d43156230116185312d011 (last modified on Wed Aug 27 12:08:45 2025) since it couldn't be found locally at piqa, or remotely on the Hugging Face Hub.
+[2025-08-31 10:57:26 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub
+[2025-08-31 10:57:26 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'ARC-Easy' at /home/ubuntu/.cache/huggingface/datasets/allenai___ai2_arc/ARC-Easy/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Wed Aug 27 12:08:48 2025).
+[2025-08-31 10:57:26 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub
+[2025-08-31 10:57:26 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'ARC-Challenge' at /home/ubuntu/.cache/huggingface/datasets/allenai___ai2_arc/ARC-Challenge/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Wed Aug 27 12:08:50 2025).
+[2025-08-31 10:57:26 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since hellaswag couldn't be found on the Hugging Face Hub
+[2025-08-31 10:57:26 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'default' at /home/ubuntu/.cache/huggingface/datasets/hellaswag/default/0.0.0/218ec52e09a7e7462a5400043bb9a69a41d06b76 (last modified on Wed Aug 27 12:08:59 2025).
+[2025-08-31 10:57:29 datasets.load] (load.py 1377): WARNING Using the latest cached version of the dataset since winogrande couldn't be found on the Hugging Face Hub
+[2025-08-31 10:57:29 datasets.packaged_modules.cache.cache] (cache.py 94): WARNING Found the latest cached dataset configuration 'winogrande_xl' at /home/ubuntu/.cache/huggingface/datasets/winogrande/winogrande_xl/0.0.0/01e74176c63542e6b0bcb004dcdea22d94fb67b5 (last modified on Wed Aug 27 12:09:01 2025).
+[2025-08-31 10:57:30 lm-eval] (evaluator.py 222): WARNING Overwriting default num_fewshot of winogrande from None to 0
+[2025-08-31 10:57:30 lm-eval] (evaluator.py 222): WARNING Overwriting default num_fewshot of hellaswag from None to 0
+[2025-08-31 10:57:30 lm-eval] (evaluator.py 222): WARNING Overwriting default num_fewshot of arc_challenge from None to 0
+[2025-08-31 10:57:30 lm-eval] (evaluator.py 222): WARNING Overwriting default num_fewshot of arc_easy from None to 0
+[2025-08-31 10:57:30 lm-eval] (evaluator.py 222): WARNING Overwriting default num_fewshot of piqa from None to 0
+[2025-08-31 10:57:30 lm-eval] (task.py 395): INFO Building contexts for winogrande on rank 0...
+[2025-08-31 10:57:30 lm-eval] (task.py 395): INFO Building contexts for hellaswag on rank 0...
+[2025-08-31 10:57:33 lm-eval] (task.py 395): INFO Building contexts for arc_challenge on rank 0...
+[2025-08-31 10:57:34 lm-eval] (task.py 395): INFO Building contexts for arc_easy on rank 0...
+[2025-08-31 10:57:35 lm-eval] (task.py 395): INFO Building contexts for piqa on rank 0...
+[2025-08-31 10:57:36 lm-eval] (evaluator.py 362): INFO Running loglikelihood requests
+[2025-08-31 11:26:02 root] (main.py 60): INFO |    Tasks    |Version|Filter|n-shot| Metric |Value |   |Stderr|
+|-------------|------:|------|-----:|--------|-----:|---|-----:|
+|winogrande   |      1|none  |     0|acc     |0.6953|±  |0.0129|
+|hellaswag    |      1|none  |     0|acc     |0.5728|±  |0.0049|
+|             |       |none  |     0|acc_norm|0.7655|±  |0.0042|
+|arc_challenge|      1|none  |     0|acc     |0.4352|±  |0.0145|
+|             |       |none  |     0|acc_norm|0.4548|±  |0.0146|
+|arc_easy     |      1|none  |     0|acc     |0.7572|±  |0.0088|
+|             |       |none  |     0|acc_norm|0.7382|±  |0.0090|
+|piqa         |      1|none  |     0|acc     |0.7715|±  |0.0098|
+|             |       |none  |     0|acc_norm|0.7824|±  |0.0096|
+
+[2025-08-31 11:26:02 root] (main.py 72): INFO Average Acc: 64.64%
+[2025-08-31 11:26:02 root] (main.py 73): INFO Average Acc (with norm): 68.72%
+[2025-08-31 11:26:02 root] (main.py 75): INFO Results string: 5.52 69.53 57.28 76.55 43.52 45.48 75.72 73.82 77.15 78.24
